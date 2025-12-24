@@ -2,9 +2,8 @@
 	"site": {
 		"name": "Madusha Lakruwan",
 		"title": "Madusha Lakruwan | Staff Engineer & Hobbyist Photographer",
-		"description": "Personal portfolio of Madusha Lakruwan - a Staff Engineer with 7+ years of experience building scalable systems and leading high-performing teams, and a hobbyist photographer",
-		"url": "https://madushalakruwan.com",
-		"ogImage": "/og-image.jpg"
+		"description": "Madusha Lakruwan - Staff Software Engineer based in Colombo, Sri Lanka with 7+ years of experience in React Native, NestJS, AWS, and Azure. Specializing in scalable systems, mobile development, and cloud architecture. Leading teams to deliver exceptional software solutions across Sri Lanka and globally.",
+		"url": "https://madushalakruwan.com"
 	},
 	"navigation": [
 		{
