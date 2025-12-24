@@ -1,0 +1,234 @@
+{
+	"personal": {
+		"name": "Madusha Lakruwan",
+		"title": "Staff Engineer & Photographer",
+		"tagline": "Building elegant software by day, capturing moments by night",
+		"email": "madushalakruwan2nd@gmail.com",
+		"phone": "+94 712 208 447",
+		"location": "Athurugiriya, Colombo",
+		"bio": "Experienced Software Engineer with 6+ years of end-to-end product development expertise across mobile, web, and back-end platforms. Led cross-functional teams to deliver high-impact applications, including a national hiking app (The Pekoe Trail), an AI-driven golf coaching tool (Swingzen), and a large-scale loyalty platform for QatarEnergy. Skilled in React Native, NestJS, Node.js, and cloud platforms (Azure, AWS), with a strong grasp of infrastructure-as-code, CI/CD, and scalable system design.",
+		"socials": {
+			"linkedin": "https://www.linkedin.com/in/madusha-lakruwan/",
+			"github": "https://github.com/madushalakruwan",
+			"twitter": "",
+			"instagram": ""
+		}
+	},
+	"experience": [
+		{
+			"id": "exp-1",
+			"company": "Surge Global",
+			"position": "Staff Engineer",
+			"location": "Singapore (Remote)",
+			"startDate": "2025-02",
+			"endDate": null,
+			"current": true,
+			"description": "Leading architecture and development of a mobile AI assistant app to manage professional network connections, schedule meetings, and suggest conversation starters.",
+			"achievements": [
+				"Architecting and developing a mobile AI assistant app to manage professional network connections",
+				"Leading solution design, requirement gathering, and feasibility analysis",
+				"Managing a cross-functional team of 9 engineers across backend, mobile, AI, and DevOps domains",
+				"Implementing React Native, NestJS, Supabase, AWS, and OpenAI real-time voice integration",
+				"Driving end-to-end project delivery with focus on scalability and real-time AI capabilities"
+			],
+			"technologies": ["React Native", "NestJS", "Supabase", "AWS", "OpenAI"]
+		},
+		{
+			"id": "exp-2",
+			"company": "Amused Group",
+			"position": "Senior Software Engineer",
+			"location": "Hybrid",
+			"startDate": "2024-12",
+			"endDate": "2025-02",
+			"current": false,
+			"description": "Contributed to high-traffic online betting platform comprising six integrated products within a React Native + Next.js monorepo.",
+			"achievements": [
+				"Supported rebranding efforts and implemented UI/UX updates",
+				"Resolved key production bugs to improve platform stability"
+			],
+			"technologies": ["React Native", "Next.js", "Monorepo"]
+		},
+		{
+			"id": "exp-3",
+			"company": "Surge Global",
+			"position": "Technical Lead",
+			"location": "Colombo",
+			"startDate": "2024-04",
+			"endDate": "2024-12",
+			"current": false,
+			"description": "Led multiple high-impact projects including QatarEnergy's Privilege Program and Qatar's Digital Society Portal.",
+			"achievements": [
+				"Delivered QatarEnergy's Privilege Program MVP in 3 months, leading mobile, web, and backend teams",
+				"Designed and deployed scalable infrastructure on Azure AKS with Terraform",
+				"Implemented Keycloak-based authentication and integrated Azure AI Search, Communication Services, and Blob Storage",
+				"Mentored Associate Tech Leads and introduced engineering best practices",
+				"Led front-end team and architected scalable monorepo solution for Qatar's Digital Society Portal",
+				"Developed IoT firmware update flow for Nucleus Biologics' device and web platform"
+			],
+			"technologies": ["Azure AKS", "Terraform", "Keycloak", "Azure AI Search", "React Native", "NestJS"]
+		},
+		{
+			"id": "exp-4",
+			"company": "Surge Global",
+			"position": "Associate Technical Lead",
+			"location": "Colombo",
+			"startDate": "2023-01",
+			"endDate": "2024-04",
+			"current": false,
+			"description": "Led mobile development for The Pekoe Trail hiking app and Swingzen golf swing analysis app.",
+			"achievements": [
+				"Led mobile development for The Pekoe Trail using React Native and Mapbox with offline functionality",
+				"Delivered fully functional product within 3-month timeline",
+				"Led mobile team for Swingzen, integrating AI models using React Native Vision Camera",
+				"Designed AWS cloud architecture using Terraform and established CI/CD pipelines"
+			],
+			"technologies": ["React Native", "Mapbox", "AWS", "Terraform", "React Native Vision Camera"]
+		},
+		{
+			"id": "exp-5",
+			"company": "Surge Global",
+			"position": "Senior Software Engineer",
+			"location": "Colombo",
+			"startDate": "2022-03",
+			"endDate": "2023-01",
+			"current": false,
+			"description": "Developed mobile and web applications for online betting platform and dating apps.",
+			"achievements": [
+				"Developed mobile and web applications for online betting platform using React Native, React, .NET, and Azure Functions",
+				"Led mobile team for Hello Tiger dating app, ensuring high-quality standards",
+				"Spearheaded rewrite of SloCoach platform, addressing performance and scalability issues using AWS and Terraform"
+			],
+			"technologies": ["React Native", "React", ".NET", "Azure Functions", "AWS", "Terraform"]
+		},
+		{
+			"id": "exp-6",
+			"company": "Surge Global",
+			"position": "Software Engineer",
+			"location": "Colombo",
+			"startDate": "2021-09",
+			"endDate": "2022-03",
+			"current": false,
+			"description": "Developed brand growth analysis platform and e-commerce solutions.",
+			"achievements": [
+				"Developed brand growth analysis web platform using React.js and Flask, integrating social media APIs",
+				"Built True Woo, an online store and video conferencing platform, with custom SSO using Express.js and EJS",
+				"Contributed to bug fixes and improvements for SloCoach using Nest.js, Nuxt.js, and GraphQL"
+			],
+			"technologies": ["React.js", "Flask", "Express.js", "NestJS", "Nuxt.js", "GraphQL"]
+		},
+		{
+			"id": "exp-7",
+			"company": "Omobio Pvt Ltd",
+			"position": "Software Engineer",
+			"location": "Colombo",
+			"startDate": "2020-08",
+			"endDate": "2021-09",
+			"current": false,
+			"description": "Enhanced telecom self-care applications and developed mobile features for major Sri Lankan operators.",
+			"achievements": [
+				"Enhanced Airtel Recharge Portal and developed Microloan feature for Dialog Genie using React Native",
+				"Revamped Hutch Selfcare App and My Airtel App from Ionic v1 to Flutter",
+				"Streamlined development with CI/CD pipelines using Gitlab CI/CD and fastlane"
+			],
+			"technologies": ["React Native", "Flutter", "Ionic", "Gitlab CI/CD", "fastlane"]
+		},
+		{
+			"id": "exp-8",
+			"company": "Omobio Pvt Ltd",
+			"position": "Associate Software Engineer",
+			"location": "Colombo",
+			"startDate": "2020-02",
+			"endDate": "2020-08",
+			"current": false,
+			"description": "Revamped mobile applications and developed community support apps.",
+			"achievements": [
+				"Revamped Hutch Selfcare App to React Native, enhancing performance",
+				"Developed 'Good Deeds,' a React Native app for community support during COVID"
+			],
+			"technologies": ["React Native"]
+		},
+		{
+			"id": "exp-9",
+			"company": "Epic Lanka Pvt Ltd",
+			"position": "iOS Developer Internship",
+			"location": "Colombo",
+			"startDate": "2018-10",
+			"endDate": "2020-02",
+			"current": false,
+			"description": "Developed iOS banking applications for major Sri Lankan banks.",
+			"achievements": [
+				"Developed DFCC Pay and BOC Palmtop Banking iOS apps using Swift 4",
+				"Contributed to Union Bank and NTB Mobile Banking apps with localization and feature additions"
+			],
+			"technologies": ["Swift 4", "iOS"]
+		}
+	],
+	"skills": {
+		"architecture": [
+			"System Design",
+			"Solution Architecture",
+			"Microservices",
+			"Monorepo Architecture",
+			"Cloud Infrastructure Design",
+			"CI/CD Automation",
+			"Domain-Driven Design (DDD)",
+			"Event-Driven Systems",
+			"API Design (REST / GraphQL)",
+			"Observability",
+			"Security & Compliance (GDPR / PCI-DSS)"
+		],
+		"frontend": [
+			"React Native",
+			"React.JS",
+			"Next.JS",
+			"iOS Development",
+			"Tailwind CSS",
+			"Storybook",
+			"ShadCN",
+			"Tanstack Query",
+			"Redux Toolkit",
+			"Zustand"
+		],
+		"backend": [
+			"NestJS",
+			"Node.js",
+			".NET",
+			"PostgreSQL",
+			"MongoDB",
+			"Keycloak"
+		],
+		"devops": [
+			"Kubernetes",
+			"Docker",
+			"AWS",
+			"Azure",
+			"Terraform",
+			"Bitbucket Pipelines",
+			"Github Actions",
+			"Supabase",
+			"Grafana Stack"
+		],
+		"ai": [
+			"LangGraph",
+			"AI/Prompt Engineering",
+			"LLM-augmented development"
+		]
+	},
+	"education": [
+		{
+			"id": "edu-1",
+			"institution": "University of Westminster",
+			"degree": "Bachelor of Science in Computer Science",
+			"startDate": "2019",
+			"endDate": "2023-10",
+			"distinction": true
+		}
+	],
+	"certificates": [
+		"Scrum Foundation Professional Certification - SFPCTM"
+	],
+	"languages": [
+		"English",
+		"Sinhala"
+	]
+}

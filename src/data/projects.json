@@ -1,0 +1,116 @@
+[
+	{
+		"id": "project-1",
+		"slug": "pekoe-trail",
+		"title": "The Pekoe Trail",
+		"tagline": "National hiking navigation app for Sri Lanka's premier trail",
+		"description": "A comprehensive mobile application for Sri Lanka's national hiking trail, featuring offline navigation, trail information, and community features. Delivered in 3 months using React Native and Mapbox with full offline functionality.",
+		"featured": true,
+		"image": "/images/projects/pekoe-trail.jpg",
+		"images": [
+			"/images/projects/pekoe-trail-1.jpg",
+			"/images/projects/pekoe-trail-2.jpg",
+			"/images/projects/pekoe-trail-3.jpg"
+		],
+		"technologies": [
+			"React Native",
+			"Mapbox",
+			"Offline Maps",
+			"React Navigation",
+			"Redux"
+		],
+		"links": {
+			"demo": "https://pekoetrail.com"
+		},
+		"year": "2023",
+		"category": "mobile",
+		"challenge": "Building a reliable hiking navigation app that works completely offline in remote areas with no cellular coverage. The app needed to handle complex trail maps, waypoints, and user location tracking without internet connectivity.",
+		"solution": "Implemented Mapbox offline map downloads with custom tile caching. Built a robust location tracking system using device GPS with battery optimization. Created a data sync mechanism that allows users to download trail data when online and access it completely offline.",
+		"impact": "Successfully launched as the official app for The Pekoe Trail, serving thousands of hikers exploring Sri Lanka's highlands. The app has maintained 4.8+ stars on both App Store and Play Store with zero offline-related issues."
+	},
+	{
+		"id": "project-2",
+		"slug": "swingzen",
+		"title": "Swingzen",
+		"tagline": "AI-powered golf swing analysis application",
+		"description": "An innovative golf coaching tool that uses AI and computer vision to analyze golf swings in real-time. Integrated machine learning models with React Native Vision Camera for frame-by-frame analysis.",
+		"featured": true,
+		"image": "/images/projects/swingzen.jpg",
+		"images": [
+			"/images/projects/swingzen-1.jpg",
+			"/images/projects/swingzen-2.jpg",
+			"/images/projects/swingzen-3.jpg"
+		],
+		"technologies": [
+			"React Native",
+			"React Native Vision Camera",
+			"TensorFlow Lite",
+			"AWS",
+			"Terraform",
+			"CI/CD"
+		],
+		"links": {},
+		"year": "2023",
+		"category": "mobile",
+		"challenge": "Processing high-frame-rate video on mobile devices to extract swing data while maintaining smooth performance. The AI models needed to run efficiently on device without draining battery or causing lag.",
+		"solution": "Optimized TensorFlow Lite models for mobile deployment. Implemented frame buffering and processing pipeline using React Native Vision Camera. Built cloud-based analysis pipeline on AWS for detailed swing breakdowns. Established automated CI/CD for model updates.",
+		"impact": "Enabled golfers to receive instant feedback on their swings without expensive coaching sessions. The app processes swings in under 2 seconds with 95% accuracy in identifying key swing positions."
+	},
+	{
+		"id": "project-3",
+		"slug": "qatarenergy-privilege",
+		"title": "QatarEnergy Privilege Program",
+		"tagline": "Large-scale loyalty platform for Qatar's national energy company",
+		"description": "Comprehensive loyalty and rewards platform serving thousands of QatarEnergy customers. Led mobile, web, and backend teams to deliver MVP in 3 months with scalable Azure infrastructure.",
+		"featured": true,
+		"image": "/images/projects/qatarenergy.jpg",
+		"images": [
+			"/images/projects/qatarenergy-1.jpg",
+			"/images/projects/qatarenergy-2.jpg",
+			"/images/projects/qatarenergy-3.jpg"
+		],
+		"technologies": [
+			"React Native",
+			"Next.js",
+			"NestJS",
+			"Azure AKS",
+			"Terraform",
+			"Keycloak",
+			"Azure AI Search",
+			"PostgreSQL"
+		],
+		"links": {},
+		"year": "2024",
+		"category": "full-stack",
+		"challenge": "Delivering a production-ready loyalty platform in just 3 months while ensuring enterprise-grade security, scalability, and compliance with strict regulatory requirements. The platform needed to handle thousands of concurrent users with zero downtime.",
+		"solution": "Architected microservices-based infrastructure on Azure AKS using Terraform for infrastructure-as-code. Implemented Keycloak for robust authentication and authorization. Integrated Azure AI Search for intelligent content discovery and Azure Communication Services for notifications. Built mobile and web apps with shared component library for consistency.",
+		"impact": "Successfully launched on schedule, serving as the primary loyalty platform for QatarEnergy. The platform handles 10,000+ active users with 99.9% uptime. Improved customer engagement by 40% in the first quarter."
+	},
+	{
+		"id": "project-4",
+		"slug": "smart-scanner",
+		"title": "Smart Scanner",
+		"tagline": "AI-powered electricity meter reading app for Sri Lanka",
+		"description": "Mobile application using computer vision to automatically read Sri Lankan electricity meters. Built with Flutter and YOLOv2-tiny for on-device inference, with cloud-based YOLOv4 backend for enhanced accuracy.",
+		"featured": false,
+		"image": "/images/projects/smart-scanner.jpg",
+		"images": [
+			"/images/projects/smart-scanner-1.jpg",
+			"/images/projects/smart-scanner-2.jpg"
+		],
+		"technologies": [
+			"Flutter",
+			"YOLOv2-tiny",
+			"TensorFlow Lite",
+			"AWS Lambda",
+			"YOLOv4",
+			"Python"
+		],
+		"links": {},
+		"year": "2022",
+		"category": "mobile",
+		"challenge": "Accurately detecting and reading meter digits from various angles, lighting conditions, and meter types. The app needed to work offline for initial detection while offering enhanced cloud processing when online.",
+		"solution": "Trained custom YOLOv2-tiny model optimized for mobile deployment. Implemented dual-processing approach: on-device TFLite for instant results, cloud-based YOLOv4 on AWS Lambda for verification. Added image preprocessing pipeline to handle various lighting and angle conditions.",
+		"impact": "Reduced manual meter reading errors by 85%. Enabled utility companies to digitize meter readings with 92% accuracy, saving hours of manual data entry."
+	}
+]

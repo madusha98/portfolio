@@ -1,0 +1,78 @@
+[
+	{
+		"id": "collection-1",
+		"slug": "sri-lanka-highlands",
+		"title": "Sri Lanka Highlands",
+		"location": "Nuwara Eliya, Sri Lanka",
+		"date": "2024-06",
+		"coverImage": "/images/photography/highlands/cover.jpg",
+		"story": "A journey through the misty tea plantations and rolling hills of Sri Lanka's central highlands. Capturing the golden hour light dancing across endless green valleys, and the quiet moments of tea pickers at work.",
+		"images": [
+			{
+				"url": "/images/photography/highlands/img-1.jpg",
+				"alt": "Tea plantation at sunrise",
+				"caption": "Golden rays breaking through morning mist over the tea estates",
+				"camera": "Sony A7III",
+				"settings": "f/2.8, 1/250s, ISO 400"
+			},
+			{
+				"url": "/images/photography/highlands/img-2.jpg",
+				"alt": "Tea picker at work",
+				"caption": "A tea picker's hands carefully selecting the finest leaves",
+				"camera": "Sony A7III",
+				"settings": "f/1.8, 1/500s, ISO 200"
+			},
+			{
+				"url": "/images/photography/highlands/img-3.jpg",
+				"alt": "Mountain landscape",
+				"caption": "The endless rolling hills of the central highlands",
+				"camera": "Sony A7III",
+				"settings": "f/8, 1/125s, ISO 100"
+			}
+		],
+		"tags": [
+			"landscape",
+			"travel",
+			"sri-lanka",
+			"tea-country"
+		]
+	},
+	{
+		"id": "collection-2",
+		"slug": "urban-colombo",
+		"title": "Urban Colombo",
+		"location": "Colombo, Sri Lanka",
+		"date": "2024-03",
+		"coverImage": "/images/photography/colombo/cover.jpg",
+		"story": "The vibrant chaos and hidden serenity of Sri Lanka's commercial capital. From bustling street markets to quiet colonial architecture, Colombo tells a story of tradition meeting modernity.",
+		"images": [
+			{
+				"url": "/images/photography/colombo/img-1.jpg",
+				"alt": "Pettah market street",
+				"caption": "The colorful chaos of Pettah's morning market",
+				"camera": "Sony A7III",
+				"settings": "f/4, 1/320s, ISO 800"
+			},
+			{
+				"url": "/images/photography/colombo/img-2.jpg",
+				"alt": "Colonial architecture",
+				"caption": "British-era building bathed in evening light",
+				"camera": "Sony A7III",
+				"settings": "f/5.6, 1/160s, ISO 200"
+			},
+			{
+				"url": "/images/photography/colombo/img-3.jpg",
+				"alt": "Galle Face sunset",
+				"caption": "Families gathering at Galle Face Green during sunset",
+				"camera": "Sony A7III",
+				"settings": "f/11, 1/60s, ISO 100"
+			}
+		],
+		"tags": [
+			"urban",
+			"street",
+			"architecture",
+			"sri-lanka"
+		]
+	}
+]

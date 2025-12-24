@@ -3,11 +3,25 @@
 :root {
 	--background: #ffffff;
 	--foreground: #171717;
+	--accent: #39ff14;
+	--secondary: #00ffff;
+	--tertiary: #ff10f0;
+	--muted: #6b7280;
+	--border: #e5e7eb;
+	--card: #f9fafb;
+	--card-foreground: #171717;
 }
 
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
+	--color-accent: var(--accent);
+	--color-secondary: var(--secondary);
+	--color-tertiary: var(--tertiary);
+	--color-muted: var(--muted);
+	--color-border: var(--border);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
 }
@@ -16,11 +30,85 @@
 	:root {
 		--background: #0a0a0a;
 		--foreground: #ededed;
+		--accent: #39ff14;
+		--secondary: #00ffff;
+		--tertiary: #ff10f0;
+		--muted: #9ca3af;
+		--border: #1f2937;
+		--card: #111111;
+		--card-foreground: #ededed;
 	}
 }
 
 body {
 	background: var(--background);
 	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--muted);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--accent);
+}
+
+/* Retro pixel border utility */
+.pixel-border {
+	border: 2px solid var(--foreground);
+	box-shadow: 4px 4px 0 0 var(--foreground);
+}
+
+.pixel-border-accent {
+	border: 2px solid var(--accent);
+	box-shadow: 4px 4px 0 0 var(--accent);
+}
+
+/* Terminal-style elements */
+.terminal-window {
+	background: var(--background);
+	border: 2px solid var(--foreground);
+	font-family: var(--font-mono);
+	box-shadow: 0 0 20px rgba(57, 255, 20, 0.1);
+}
+
+/* Scan line effect for retro feel (subtle) */
+.scan-lines::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: repeating-linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0.05) 1px,
+		transparent 1px,
+		transparent 2px
+	);
+	pointer-events: none;
+}
+
+/* Smooth scroll behavior */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
 }

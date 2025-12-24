@@ -1,0 +1,43 @@
+{
+	"site": {
+		"name": "Madusha Lakruwan",
+		"title": "Madusha Lakruwan | Staff Engineer & Photographer",
+		"description": "Personal portfolio of Madusha Lakruwan - a software engineer and photographer passionate about building elegant solutions and capturing life's moments",
+		"url": "https://madushalakruwan.com",
+		"ogImage": "/og-image.jpg"
+	},
+	"navigation": [
+		{
+			"label": "Home",
+			"href": "/#home"
+		},
+		{
+			"label": "About",
+			"href": "/#about"
+		},
+		{
+			"label": "Experience",
+			"href": "/#experience"
+		},
+		{
+			"label": "Skills",
+			"href": "/#skills"
+		},
+		{
+			"label": "Projects",
+			"href": "/projects"
+		},
+		{
+			"label": "Photography",
+			"href": "/photography"
+		},
+		{
+			"label": "Blog",
+			"href": "/blog"
+		},
+		{
+			"label": "Contact",
+			"href": "/#contact"
+		}
+	]
+}
