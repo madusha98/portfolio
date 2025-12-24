@@ -36,11 +36,11 @@ export function MobileMenu() {
 					<span className="sr-only">Toggle menu</span>
 				</Button>
 			</SheetTrigger>
-			<SheetContent side="right" className="w-64 pixel-border">
-				<SheetHeader>
-					<SheetTitle className="font-mono text-left">Menu</SheetTitle>
+			<SheetContent side="right" className="w-72 sm:w-80 p-0">
+				<SheetHeader className="px-6 pt-6 pb-4 border-b-2 border-foreground">
+					<SheetTitle className="font-mono text-left text-xl">Menu</SheetTitle>
 				</SheetHeader>
-				<nav className="flex flex-col gap-4 mt-8">
+				<nav className="flex flex-col gap-1 p-6">
 					{siteConfig.navigation.map((item) => {
 						const isAnchorLink = item.href.startsWith("/#");
 
@@ -49,7 +49,7 @@ export function MobileMenu() {
 								<button
 									key={item.href}
 									onClick={() => handleNavClick(item.href)}
-									className="font-mono text-sm hover:text-accent transition-colors text-left"
+									className="font-mono text-base hover:text-accent transition-colors text-left py-3 px-4 hover:bg-accent/10 rounded"
 								>
 									{item.label}
 								</button>
@@ -61,7 +61,7 @@ export function MobileMenu() {
 								key={item.href}
 								href={item.href}
 								onClick={() => setOpen(false)}
-								className="font-mono text-sm hover:text-accent transition-colors"
+								className="font-mono text-base hover:text-accent transition-colors py-3 px-4 hover:bg-accent/10 rounded"
 							>
 								{item.label}
 							</Link>

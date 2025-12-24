@@ -3,8 +3,8 @@
 		"id": "project-1",
 		"slug": "pekoe-trail",
 		"title": "The Pekoe Trail",
-		"tagline": "National hiking navigation app for Sri Lanka's premier trail",
-		"description": "A comprehensive mobile application for Sri Lanka's national hiking trail, featuring offline navigation, trail information, and community features. Delivered in 3 months using React Native and Mapbox with full offline functionality.",
+		"tagline": "Hiking navigation app for Sri Lanka's premier long-distance trail",
+		"description": "A comprehensive mobile application for The Pekoe Trail in Sri Lanka, featuring offline navigation, trail information, and community features. Delivered in 3 months using React Native and Mapbox with full offline functionality.",
 		"featured": true,
 		"image": "/images/projects/pekoe-trail.jpg",
 		"images": [

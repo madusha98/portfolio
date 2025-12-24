@@ -1,12 +1,12 @@
 {
 	"personal": {
 		"name": "Madusha Lakruwan",
-		"title": "Staff Engineer & Photographer",
-		"tagline": "Building elegant software by day, capturing moments by night",
+		"title": "Staff Engineer",
+		"tagline": "Building scalable systems and leading teams to deliver exceptional software solutions",
 		"email": "madushalakruwan2nd@gmail.com",
 		"phone": "+94 712 208 447",
 		"location": "Athurugiriya, Colombo",
-		"bio": "Experienced Software Engineer with 6+ years of end-to-end product development expertise across mobile, web, and back-end platforms. Led cross-functional teams to deliver high-impact applications, including a national hiking app (The Pekoe Trail), an AI-driven golf coaching tool (Swingzen), and a large-scale loyalty platform for QatarEnergy. Skilled in React Native, NestJS, Node.js, and cloud platforms (Azure, AWS), with a strong grasp of infrastructure-as-code, CI/CD, and scalable system design.",
+		"bio": "Experienced Software Engineer with 7+ years of end-to-end product development expertise across mobile, web, and back-end platforms. Led cross-functional teams to deliver high-impact applications, including a hiking navigation app (The Pekoe Trail), an AI-driven golf coaching tool (Swingzen), and a large-scale loyalty platform for QatarEnergy. Skilled in React Native, NestJS, Node.js, and cloud platforms (Azure, AWS), with a strong grasp of infrastructure-as-code, CI/CD, and scalable system design.",
 		"socials": {
 			"linkedin": "https://www.linkedin.com/in/madusha-lakruwan/",
 			"github": "https://github.com/madushalakruwan",

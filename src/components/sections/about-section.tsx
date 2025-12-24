@@ -9,7 +9,7 @@ import { calculateYearsDiff } from "@/lib/utils";
 export function AboutSection() {
 	const yearsOfExperience = calculateYearsDiff("2018-10");
 	const totalProjects = 15; // Based on CV projects
-	const photosTaken = "1000+"; // Placeholder
+	const teamSize = "10+"; // Led teams with 10+ members
 
 	return (
 		<section id="about" className="py-20 px-4">
@@ -23,13 +23,15 @@ export function AboutSection() {
 						<div className="space-y-4 text-lg text-muted-foreground">
 							<p>{cvData.personal.bio}</p>
 							<p>
-								Beyond code, I&apos;m passionate about photography and travel. I believe that both software
-								engineering and photography share a common goal: capturing moments and creating
-								experiences that matter.
+								I thrive on solving complex technical challenges and building systems that scale. From mobile apps
+								to cloud infrastructure, I enjoy the full spectrum of software development.
 							</p>
 							<p>
-								When I&apos;m not architecting systems or writing code, you&apos;ll find me exploring new places
-								with my camera, seeking the perfect shot that tells a story.
+								My approach combines technical excellence with pragmatic problem-solving, always focusing on
+								delivering value while maintaining code quality and system reliability.
+							</p>
+							<p className="text-base">
+								Outside of work, I&apos;m a hobbyist photographer exploring the world through my lens, one frame at a time.
 							</p>
 						</div>
 					</ScrollReveal>
@@ -62,9 +64,9 @@ export function AboutSection() {
 								<CardContent className="pt-6">
 									<div className="text-center">
 										<div className="font-mono text-4xl font-bold text-accent mb-2">
-											{photosTaken}
+											{teamSize}
 										</div>
-										<div className="text-sm text-muted">Photos Captured</div>
+										<div className="text-sm text-muted">Members in Teams Led</div>
 									</div>
 								</CardContent>
 							</Card>
