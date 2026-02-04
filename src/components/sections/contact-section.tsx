@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/shared/contact-form";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Linkedin, Github, MapPin, Phone } from "lucide-react";
 import cvData from "@/data/cv.json";
+import { MagneticButton } from "@/components/effects";
 
 export function ContactSection() {
 	return (
@@ -72,26 +73,30 @@ export function ContactSection() {
 
 								<div className="flex gap-4 pt-4">
 									{cvData.personal.socials.github && (
-										<a
-											href={cvData.personal.socials.github}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="p-3 pixel-border hover:bg-accent hover:text-background transition-colors"
-											aria-label="GitHub"
-										>
-											<Github className="h-5 w-5" />
-										</a>
+										<MagneticButton>
+											<a
+												href={cvData.personal.socials.github}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="p-3 pixel-border hover:bg-accent hover:text-background transition-colors block"
+												aria-label="GitHub"
+											>
+												<Github className="h-5 w-5" />
+											</a>
+										</MagneticButton>
 									)}
 									{cvData.personal.socials.linkedin && (
-										<a
-											href={cvData.personal.socials.linkedin}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="p-3 pixel-border hover:bg-accent hover:text-background transition-colors"
-											aria-label="LinkedIn"
-										>
-											<Linkedin className="h-5 w-5" />
-										</a>
+										<MagneticButton>
+											<a
+												href={cvData.personal.socials.linkedin}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="p-3 pixel-border hover:bg-accent hover:text-background transition-colors block"
+												aria-label="LinkedIn"
+											>
+												<Linkedin className="h-5 w-5" />
+											</a>
+										</MagneticButton>
 									)}
 								</div>
 							</div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { staggerItem } from "@/lib/animations";
 import { formatDateRange } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { GlitchText } from "@/components/effects";
 
 interface TimelineItemProps {
 	company: string;
@@ -47,7 +48,11 @@ export function TimelineItem({
 				</div>
 
 				<div className="flex-1">
-					<h3 className="font-mono text-xl font-bold mb-1">{position}</h3>
+					<h3 className="font-mono text-xl font-bold mb-1">
+						<GlitchText glitchOnHover={true} randomGlitch={false}>
+							{position}
+						</GlitchText>
+					</h3>
 					<div className="text-muted mb-2">
 						{company} • {location}
 					</div>
