@@ -11,3 +11,4 @@ export { RetroTunnel } from './retro-tunnel';
 export { AsteroidsGame } from './asteroids-game';
 export { PongGame } from './pong-game';
 export { GyroBallGame } from './gyro-ball-game';
+export { StarfieldHyperspace } from './starfield-hyperspace';
