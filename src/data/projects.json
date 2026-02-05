@@ -6,6 +6,7 @@
 		"tagline": "Hiking navigation app for Sri Lanka's premier long-distance trail",
 		"description": "A comprehensive mobile application for The Pekoe Trail in Sri Lanka, featuring offline navigation, trail information, and community features. Delivered in 3 months using React Native and Mapbox with full offline functionality.",
 		"featured": true,
+		"order": 4,
 		"image": "/images/projects/pekoe-trail.jpg",
 		"images": [
 			"/images/projects/pekoe-trail-1.jpg",
@@ -35,6 +36,7 @@
 		"tagline": "AI-powered golf swing analysis application",
 		"description": "An innovative golf coaching tool that uses AI and computer vision to analyze golf swings in real-time. Integrated machine learning models with React Native Vision Camera for frame-by-frame analysis.",
 		"featured": true,
+		"order": 5,
 		"image": "/images/projects/swingzen.jpg",
 		"images": [
 			"/images/projects/swingzen-1.jpg",
@@ -63,6 +65,7 @@
 		"tagline": "Large-scale loyalty platform for Qatar's national energy company",
 		"description": "Comprehensive loyalty and rewards platform serving thousands of QatarEnergy customers. Led mobile, web, and backend teams to deliver MVP in 3 months with scalable Azure infrastructure.",
 		"featured": true,
+		"order": 3,
 		"image": "/images/projects/qatarenergy.jpg",
 		"images": [
 			"/images/projects/qatarenergy-1.jpg",
@@ -83,7 +86,7 @@
 		"year": "2024",
 		"category": "full-stack",
 		"challenge": "Delivering a production-ready loyalty platform in just 3 months while ensuring enterprise-grade security, scalability, and compliance with strict regulatory requirements. The platform needed to handle thousands of concurrent users with zero downtime.",
-		"solution": "Architected microservices-based infrastructure on Azure AKS using Terraform for infrastructure-as-code. Implemented Keycloak for robust authentication and authorization. Integrated Azure AI Search for intelligent content discovery and Azure Communication Services for notifications. Built mobile and web apps with shared component library for consistency.",
+		"solution": "Architected the backend infrastructure on Azure AKS using Terraform for infrastructure-as-code. Implemented Keycloak for robust authentication and authorization. Integrated Azure AI Search for intelligent content discovery and Azure Communication Services for notifications. Built mobile and web apps with shared component library for consistency.",
 		"impact": "Successfully launched on schedule, serving as the primary loyalty platform for QatarEnergy. The platform handles 10,000+ active users with 99.9% uptime. Improved customer engagement by 40% in the first quarter."
 	},
 	{
@@ -93,6 +96,7 @@
 		"tagline": "AI-powered electricity meter reading app for Sri Lanka",
 		"description": "Mobile application using computer vision to automatically read Sri Lankan electricity meters. Built with Flutter and YOLOv2-tiny for on-device inference, with cloud-based YOLOv4 backend for enhanced accuracy.",
 		"featured": false,
+		"order": 6,
 		"image": "/images/projects/smart-scanner.jpg",
 		"images": [
 			"/images/projects/smart-scanner-1.jpg",
@@ -112,5 +116,64 @@
 		"challenge": "Accurately detecting and reading meter digits from various angles, lighting conditions, and meter types. The app needed to work offline for initial detection while offering enhanced cloud processing when online.",
 		"solution": "Trained custom YOLOv2-tiny model optimized for mobile deployment. Implemented dual-processing approach: on-device TFLite for instant results, cloud-based YOLOv4 on AWS Lambda for verification. Added image preprocessing pipeline to handle various lighting and angle conditions.",
 		"impact": "Reduced manual meter reading errors by 85%. Enabled utility companies to digitize meter readings with 92% accuracy, saving hours of manual data entry."
+	},
+	{
+		"id": "project-5",
+		"slug": "speech-therapy-bot",
+		"title": "Speech Therapy Bot",
+		"tagline": "AI-powered speech rehabilitation platform delivered via WhatsApp",
+		"description": "An AI-powered speech therapy platform for post-stroke aphasia patients, delivered entirely through WhatsApp. Uses Google Gemini for real-time speech analysis and personalized feedback, with an AdminJS back office for therapist management.",
+		"featured": true,
+		"order": 1,
+		"image": "/images/projects/speech-therapy.jpg",
+		"images": [
+			"/images/projects/speech-therapy-1.jpg",
+			"/images/projects/speech-therapy-2.jpg"
+		],
+		"technologies": [
+			"AdonisJS",
+			"TypeScript",
+			"Google Gemini",
+			"LangChain",
+			"WhatsApp API",
+			"PostgreSQL",
+			"AWS S3",
+			"AdminJS",
+			"Docker"
+		],
+		"links": {},
+		"year": "2025",
+		"category": "full-stack",
+		"challenge": "Post-stroke aphasia patients need consistent speech therapy practice but face barriers like limited therapist access, difficulty traveling, and unfamiliarity with new technology. The solution needed to deliver complex AI-powered speech analysis through an interface elderly patients already know.",
+		"solution": "Built the platform on WhatsApp so patients practice without learning new apps. Integrated Google Gemini via LangChain for real-time voice transcription and pronunciation scoring. Implemented adaptive difficulty levels, follow-up comprehension questions, and demonstration videos for failed attempts. Created an AdminJS back office for exercise management with CSV import and AI-generated exercise images.",
+		"impact": "Enabled patients to practice speech therapy independently between sessions using a familiar interface. The AI provides instant pronunciation feedback with 0-100 scoring, freeing therapists from repetitive assessment tasks and allowing them to focus on complex cases."
+	},
+	{
+		"id": "project-6",
+		"slug": "kinso",
+		"title": "Kinso",
+		"tagline": "AI-powered relationship manager for founders and operators",
+		"description": "An intelligent assistant that enriches your contacts from various sources, integrates with your calendar, and prioritizes meetings. Built as lead engineer using Expo, NestJS, and LangGraph for agentic AI workflows.",
+		"featured": true,
+		"order": 2,
+		"image": "/images/projects/kinso.jpg",
+		"images": [
+			"/images/projects/kinso-1.jpg",
+			"/images/projects/kinso-2.jpg"
+		],
+		"technologies": [
+			"Expo",
+			"NestJS",
+			"LangGraph",
+			"PostgreSQL",
+			"AWS",
+			"Terraform"
+		],
+		"links": {},
+		"year": "2025",
+		"category": "full-stack",
+		"challenge": "Founders juggle hundreds of relationships but lack a unified way to stay on top of who matters most. Existing CRMs are built for sales teams, not personal networks. The platform needed to aggregate contact data from multiple sources, understand relationship context, and surface timely actions.",
+		"solution": "Built an agentic AI pipeline using LangGraph to enrich contacts by pulling data from various sources and synthesizing relationship context. Integrated calendar APIs to analyze meeting patterns and prioritize upcoming interactions. Developed the mobile app with Expo for cross-platform reach, backed by a NestJS backend on AWS infrastructure provisioned with Terraform.",
+		"impact": "Gave founders a single intelligent view of their network with AI-driven prioritization, replacing manual CRM workflows. The platform automatically enriches contact profiles and surfaces the right people at the right time."
 	}
 ]

@@ -1,14 +1,21 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import cvData from "@/data/cv.json";
 import { ArrowDown } from "lucide-react";
+import { GlitchText, MagneticButton, PongGame, GyroBallGame } from "@/components/effects";
 
 export function HeroSection() {
 	const { scrollToSection } = useSmoothScroll();
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		setIsMobile(window.matchMedia('(pointer: coarse)').matches);
+	}, []);
 
 	return (
 		<section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
@@ -26,11 +33,15 @@ export function HeroSection() {
 					variants={staggerItem}
 					className="font-mono text-4xl md:text-6xl lg:text-7xl font-bold mb-4"
 				>
-					{cvData.personal.name}
+					<GlitchText>
+						{cvData.personal.name}
+					</GlitchText>
 				</motion.h1>
 
 				<motion.h2 variants={staggerItem} className="text-2xl md:text-3xl text-muted mb-6">
-					{cvData.personal.title}
+					<GlitchText glitchOnHover={true} randomGlitch={false}>
+						{cvData.personal.title}
+					</GlitchText>
 				</motion.h2>
 
 				<motion.p variants={staggerItem} className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-8">
@@ -38,21 +49,25 @@ export function HeroSection() {
 				</motion.p>
 
 				<motion.div variants={staggerItem} className="flex gap-4 justify-center flex-wrap">
-					<Button
-						onClick={() => scrollToSection("contact")}
-						className="pixel-border-accent font-mono"
-						size="lg"
-					>
-						Get In Touch
-					</Button>
-					<Button
-						onClick={() => scrollToSection("experience")}
-						variant="outline"
-						className="pixel-border font-mono"
-						size="lg"
-					>
-						View Work
-					</Button>
+					<MagneticButton>
+						<Button
+							onClick={() => scrollToSection("contact")}
+							className="pixel-border-accent font-mono"
+							size="lg"
+						>
+							Get In Touch
+						</Button>
+					</MagneticButton>
+					<MagneticButton>
+						<Button
+							onClick={() => scrollToSection("experience")}
+							variant="outline"
+							className="pixel-border font-mono"
+							size="lg"
+						>
+							View Work
+						</Button>
+					</MagneticButton>
 				</motion.div>
 
 				<motion.div
@@ -61,6 +76,10 @@ export function HeroSection() {
 					onClick={() => scrollToSection("about")}
 				>
 					<ArrowDown className="mx-auto h-6 w-6 text-accent" />
+				</motion.div>
+
+				<motion.div variants={staggerItem} className="mt-8">
+					{isMobile ? <GyroBallGame /> : <PongGame />}
 				</motion.div>
 			</motion.div>
 		</section>

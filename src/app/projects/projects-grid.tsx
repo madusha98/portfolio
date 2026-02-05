@@ -2,27 +2,46 @@
 
 import { SectionHeader } from "@/components/shared/section-header";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import projectsData from "@/data/projects.json";
 import { motion } from "framer-motion";
-import { RGBSplit, MagneticButton, GlitchText } from "@/components/effects";
+import { RGBSplit, GlitchText } from "@/components/effects";
 
-export function FeaturedProjectsSection() {
-	const featuredProjects = projectsData.filter((project) => project.featured).sort((a, b) => a.order - b.order);
-
+export function ProjectsGrid() {
 	return (
-		<section className="py-20 px-4 bg-card">
+		<section className="py-20 px-4 min-h-screen">
 			<div className="container mx-auto max-w-6xl">
 				<ScrollReveal>
-					<SectionHeader title="Featured Projects" subtitle="Highlights from my work" />
+					<Link href="/">
+						<Button
+							variant="ghost"
+							className="mb-8 font-mono hover:text-accent transition-colors"
+						>
+							<ArrowLeft className="mr-2 h-4 w-4" />
+							Back to Home
+						</Button>
+					</Link>
+				</ScrollReveal>
+
+				<ScrollReveal>
+					<SectionHeader
+						title="All Projects"
+						subtitle="A collection of things I've built"
+					/>
 				</ScrollReveal>
 
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-					{featuredProjects.map((project, index) => (
+					{[...projectsData].sort((a, b) => a.order - b.order).map((project, index) => (
 						<ScrollReveal key={project.id} delay={index * 0.1}>
 							<RGBSplit>
 								<motion.div whileHover="hover" initial="rest">
@@ -50,7 +69,11 @@ export function FeaturedProjectsSection() {
 
 											<div className="flex flex-wrap gap-2 mb-4">
 												{project.technologies.slice(0, 3).map((tech) => (
-													<Badge key={tech} variant="outline" className="text-xs">
+													<Badge
+														key={tech}
+														variant="outline"
+														className="text-xs"
+													>
 														{tech}
 													</Badge>
 												))}
@@ -61,7 +84,10 @@ export function FeaturedProjectsSection() {
 												)}
 											</div>
 
-											<Link href={`/projects/${project.slug}`} className="mt-auto">
+											<Link
+												href={`/projects/${project.slug}`}
+												className="mt-auto"
+											>
 												<Button
 													variant="ghost"
 													className="w-full group hover:text-accent transition-colors"
@@ -77,17 +103,6 @@ export function FeaturedProjectsSection() {
 						</ScrollReveal>
 					))}
 				</div>
-
-				<ScrollReveal delay={0.3} className="text-center mt-12">
-					<MagneticButton>
-						<Link href="/projects">
-							<Button variant="outline" className="pixel-border font-mono" size="lg">
-								View All Projects
-								<ArrowRight className="ml-2 h-4 w-4" />
-							</Button>
-						</Link>
-					</MagneticButton>
-				</ScrollReveal>
 			</div>
 		</section>
 	);

@@ -5,6 +5,7 @@ import { MobileMenu } from "./mobile-menu";
 import { motion } from "framer-motion";
 import { fadeInDown } from "@/lib/animations";
 import Link from "next/link";
+import { GlitchText } from "@/components/effects";
 
 export function Header() {
 	return (
@@ -17,7 +18,7 @@ export function Header() {
 			<div className="container mx-auto px-4">
 				<div className="flex items-center justify-between h-16">
 					<Link href="/" className="font-mono text-xl font-bold hover:text-accent transition-colors">
-						ML.
+						<GlitchText>ML.</GlitchText>
 					</Link>
 
 					{/* Desktop Navigation */}
