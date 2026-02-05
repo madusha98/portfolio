@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
 	--background: #ffffff;
@@ -351,6 +352,24 @@ html {
 	border-radius: 0;
 	background: var(--accent);
 	mix-blend-mode: screen;
+}
+
+/* MDX blog content styles */
+.mdx-content code:not(pre code) {
+	background: var(--card);
+	border: 1px solid var(--border);
+	padding: 0.1em 0.4em;
+	border-radius: 4px;
+	font-family: var(--font-mono);
+	font-size: 0.875em;
+	color: var(--accent);
+}
+
+.mdx-content pre code {
+	background: none;
+	border: none;
+	padding: 0;
+	color: var(--foreground);
 }
 
 /* Reduced motion support */
