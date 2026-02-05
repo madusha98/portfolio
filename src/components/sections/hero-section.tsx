@@ -1,15 +1,21 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import cvData from "@/data/cv.json";
 import { ArrowDown } from "lucide-react";
-import { GlitchText, MagneticButton, PongGame } from "@/components/effects";
+import { GlitchText, MagneticButton, PongGame, GyroBallGame } from "@/components/effects";
 
 export function HeroSection() {
 	const { scrollToSection } = useSmoothScroll();
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		setIsMobile(window.matchMedia('(pointer: coarse)').matches);
+	}, []);
 
 	return (
 		<section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
@@ -73,7 +79,7 @@ export function HeroSection() {
 				</motion.div>
 
 				<motion.div variants={staggerItem} className="mt-8">
-					<PongGame />
+					{isMobile ? <GyroBallGame /> : <PongGame />}
 				</motion.div>
 			</motion.div>
 		</section>
