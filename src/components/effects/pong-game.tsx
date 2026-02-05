@@ -31,9 +31,21 @@ export function PongGame() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const particlesRef = useRef<Particle[]>([]);
   const screenFlashRef = useRef({ intensity: 0, color: '#39ff14' });
   const scoreAnimRef = useRef({ player: 0, ai: 0, playerScale: 1, aiScale: 1 });
+
+  // Opacity settings for subtle appearance
+  const OPACITY = {
+    paddle: 0.25,
+    ball: 0.3,
+    trail: 0.15,
+    score: 0.15,
+    net: 0.05,
+    particles: 0.4,
+    flash: 0.1,
+  };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -90,6 +102,9 @@ export function PongGame() {
     const handleMouseMove = (e: MouseEvent) => {
       mouseY = e.clientY;
     };
+
+    // Ref to track pause state inside animation loop
+    const isPausedRef = { current: isPaused };
 
     const createScoreExplosion = (x: number, y: number, color: string) => {
       // Create explosion particles
@@ -172,7 +187,7 @@ export function PongGame() {
       // Player score (left side)
       const playerStr = playerScore.toString();
       const playerX = width / 4;
-      ctx.globalAlpha = 0.4;
+      ctx.globalAlpha = OPACITY.score * scoreAnimRef.current.playerScale;
       playerStr.split('').forEach((digit, i) => {
         const digitX = playerX + (i - (playerStr.length - 1) / 2) * (pixelSize * 4);
         drawPixelDigit(digit, digitX, scoreY, pixelSize, '#39ff14', scoreAnimRef.current.playerScale);
@@ -181,6 +196,7 @@ export function PongGame() {
       // AI score (right side)
       const aiStr = aiScore.toString();
       const aiX = (width / 4) * 3;
+      ctx.globalAlpha = OPACITY.score * scoreAnimRef.current.aiScale;
       aiStr.split('').forEach((digit, i) => {
         const digitX = aiX + (i - (aiStr.length - 1) / 2) * (pixelSize * 4);
         drawPixelDigit(digit, digitX, scoreY, pixelSize, '#ff10f0', scoreAnimRef.current.aiScale);
@@ -192,7 +208,8 @@ export function PongGame() {
     const drawPaddle = (x: number, y: number, isPlayer: boolean) => {
       const color = isPlayer ? '#39ff14' : '#ff10f0';
 
-      ctx.shadowBlur = 20;
+      ctx.globalAlpha = OPACITY.paddle;
+      ctx.shadowBlur = 15;
       ctx.shadowColor = color;
       ctx.fillStyle = color;
       ctx.fillRect(x, y, paddleWidth, paddleHeight);
@@ -202,13 +219,14 @@ export function PongGame() {
       ctx.strokeRect(x - 2, y - 2, paddleWidth + 4, paddleHeight + 4);
 
       ctx.shadowBlur = 0;
+      ctx.globalAlpha = 1;
     };
 
     const drawBall = () => {
       trails.forEach((trail) => {
-        const alpha = 1 - trail.age / 10;
+        const alpha = (1 - trail.age / 10) * OPACITY.trail;
         if (alpha > 0) {
-          ctx.fillStyle = `rgba(0, 255, 255, ${alpha * 0.5})`;
+          ctx.fillStyle = `rgba(0, 255, 255, ${alpha})`;
           ctx.fillRect(
             trail.x - ballSize / 2 + 2,
             trail.y - ballSize / 2 + 2,
@@ -218,15 +236,17 @@ export function PongGame() {
         }
       });
 
-      ctx.shadowBlur = 15;
+      ctx.globalAlpha = OPACITY.ball;
+      ctx.shadowBlur = 10;
       ctx.shadowColor = '#00ffff';
       ctx.fillStyle = '#00ffff';
       ctx.fillRect(ballX - ballSize / 2, ballY - ballSize / 2, ballSize, ballSize);
       ctx.shadowBlur = 0;
+      ctx.globalAlpha = 1;
     };
 
     const drawNet = () => {
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.strokeStyle = `rgba(255, 255, 255, ${OPACITY.net})`;
       ctx.lineWidth = 4;
       ctx.setLineDash([20, 20]);
       ctx.beginPath();
@@ -246,8 +266,8 @@ export function PongGame() {
 
         if (p.life <= 0) return false;
 
-        const alpha = p.life / p.maxLife;
-        ctx.shadowBlur = 10;
+        const alpha = (p.life / p.maxLife) * OPACITY.particles;
+        ctx.shadowBlur = 8;
         ctx.shadowColor = p.color;
         ctx.fillStyle = p.color;
         ctx.globalAlpha = alpha;
@@ -262,93 +282,101 @@ export function PongGame() {
     const drawScreenFlash = () => {
       if (screenFlashRef.current.intensity > 0) {
         ctx.fillStyle = screenFlashRef.current.color;
-        ctx.globalAlpha = screenFlashRef.current.intensity * 0.3;
+        ctx.globalAlpha = screenFlashRef.current.intensity * OPACITY.flash;
         ctx.fillRect(0, 0, width, height);
         ctx.globalAlpha = 1;
-        screenFlashRef.current.intensity *= 0.9;
+        screenFlashRef.current.intensity *= 0.85;
       }
+    };
+
+    const drawPauseIndicator = () => {
+      ctx.globalAlpha = 0.3;
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '14px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('PAUSED - Press P to resume', width / 2, height - 30);
+      ctx.globalAlpha = 1;
     };
 
     const animate = () => {
       ctx.fillStyle = 'rgba(10, 10, 10, 0.3)';
       ctx.fillRect(0, 0, width, height);
 
-      // Update player paddle
-      const targetY = mouseY - paddleHeight / 2;
-      playerY += (targetY - playerY) * 0.15;
-      playerY = Math.max(0, Math.min(height - paddleHeight, playerY));
+      if (!isPausedRef.current) {
+        // Update player paddle
+        const targetY = mouseY - paddleHeight / 2;
+        playerY += (targetY - playerY) * 0.15;
+        playerY = Math.max(0, Math.min(height - paddleHeight, playerY));
 
-      // Update AI paddle (intentionally beatable)
-      // AI only reacts when ball is coming toward it
-      if (ballVX > 0) {
-        const aiTargetY = ballY - paddleHeight / 2;
-        // Slow reaction + max speed limit so player can win
-        const aiSpeed = Math.min(3, Math.abs(aiTargetY - aiY) * 0.025);
-        if (aiTargetY > aiY) {
-          aiY += aiSpeed;
-        } else if (aiTargetY < aiY) {
-          aiY -= aiSpeed;
+        // Update AI paddle (intentionally beatable)
+        if (ballVX > 0) {
+          const aiTargetY = ballY - paddleHeight / 2;
+          const aiSpeed = Math.min(3, Math.abs(aiTargetY - aiY) * 0.025);
+          if (aiTargetY > aiY) {
+            aiY += aiSpeed;
+          } else if (aiTargetY < aiY) {
+            aiY -= aiSpeed;
+          }
+          if (Math.random() < 0.02) {
+            aiY += (Math.random() - 0.5) * 20;
+          }
         }
-        // Add occasional mistakes - AI hesitates
-        if (Math.random() < 0.02) {
-          aiY += (Math.random() - 0.5) * 20;
+        aiY = Math.max(0, Math.min(height - paddleHeight, aiY));
+
+        // Ball trail
+        trails.push({ x: ballX, y: ballY, age: 0 });
+        trails.forEach(t => t.age++);
+        while (trails.length > 10) trails.shift();
+
+        // Update ball
+        ballX += ballVX;
+        ballY += ballVY;
+
+        // Ball collision with top/bottom
+        if (ballY - ballSize / 2 <= 0 || ballY + ballSize / 2 >= height) {
+          ballVY *= -1;
+          ballY = ballY - ballSize / 2 <= 0 ? ballSize / 2 : height - ballSize / 2;
+        }
+
+        // Ball collision with player paddle
+        if (
+          ballX - ballSize / 2 <= paddleOffset + paddleWidth &&
+          ballX + ballSize / 2 >= paddleOffset &&
+          ballY >= playerY &&
+          ballY <= playerY + paddleHeight
+        ) {
+          ballVX = Math.abs(ballVX) * 1.02;
+          ballVX = Math.min(ballVX, 12);
+          const hitPos = (ballY - playerY) / paddleHeight;
+          ballVY = (hitPos - 0.5) * 8;
+          ballX = paddleOffset + paddleWidth + ballSize / 2;
+        }
+
+        // Ball collision with AI paddle
+        if (
+          ballX + ballSize / 2 >= width - paddleOffset - paddleWidth &&
+          ballX - ballSize / 2 <= width - paddleOffset &&
+          ballY >= aiY &&
+          ballY <= aiY + paddleHeight
+        ) {
+          ballVX = -Math.abs(ballVX) * 1.02;
+          ballVX = Math.max(ballVX, -12);
+          const hitPos = (ballY - aiY) / paddleHeight;
+          ballVY = (hitPos - 0.5) * 8;
+          ballX = width - paddleOffset - paddleWidth - ballSize / 2;
+        }
+
+        // Score points
+        if (ballX < 0) {
+          aiScore++;
+          resetBall(1, 'ai');
+        } else if (ballX > width) {
+          playerScore++;
+          resetBall(-1, 'player');
         }
       }
-      aiY = Math.max(0, Math.min(height - paddleHeight, aiY));
 
-      // Ball trail
-      trails.push({ x: ballX, y: ballY, age: 0 });
-      trails.forEach(t => t.age++);
-      while (trails.length > 10) trails.shift();
-
-      // Update ball
-      ballX += ballVX;
-      ballY += ballVY;
-
-      // Ball collision with top/bottom
-      if (ballY - ballSize / 2 <= 0 || ballY + ballSize / 2 >= height) {
-        ballVY *= -1;
-        ballY = ballY - ballSize / 2 <= 0 ? ballSize / 2 : height - ballSize / 2;
-      }
-
-      // Ball collision with player paddle
-      if (
-        ballX - ballSize / 2 <= paddleOffset + paddleWidth &&
-        ballX + ballSize / 2 >= paddleOffset &&
-        ballY >= playerY &&
-        ballY <= playerY + paddleHeight
-      ) {
-        ballVX = Math.abs(ballVX) * 1.02;
-        ballVX = Math.min(ballVX, 12);
-        const hitPos = (ballY - playerY) / paddleHeight;
-        ballVY = (hitPos - 0.5) * 8;
-        ballX = paddleOffset + paddleWidth + ballSize / 2;
-      }
-
-      // Ball collision with AI paddle
-      if (
-        ballX + ballSize / 2 >= width - paddleOffset - paddleWidth &&
-        ballX - ballSize / 2 <= width - paddleOffset &&
-        ballY >= aiY &&
-        ballY <= aiY + paddleHeight
-      ) {
-        ballVX = -Math.abs(ballVX) * 1.02;
-        ballVX = Math.max(ballVX, -12);
-        const hitPos = (ballY - aiY) / paddleHeight;
-        ballVY = (hitPos - 0.5) * 8;
-        ballX = width - paddleOffset - paddleWidth - ballSize / 2;
-      }
-
-      // Score points
-      if (ballX < 0) {
-        aiScore++;
-        resetBall(1, 'ai');
-      } else if (ballX > width) {
-        playerScore++;
-        resetBall(-1, 'player');
-      }
-
-      // Draw everything
+      // Draw everything (even when paused)
       drawScreenFlash();
       drawNet();
       drawRetroScore();
@@ -356,6 +384,10 @@ export function PongGame() {
       drawPaddle(paddleOffset, playerY, true);
       drawPaddle(width - paddleOffset - paddleWidth, aiY, false);
       drawBall();
+
+      if (isPausedRef.current) {
+        drawPauseIndicator();
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -376,7 +408,19 @@ export function PongGame() {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isVisible]);
+  }, [isVisible, isPaused]);
+
+  // Keyboard handler for pause
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'p' || e.key === 'P') {
+        setIsPaused(prev => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   if (!isVisible) return null;
 
