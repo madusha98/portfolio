@@ -9,11 +9,17 @@ export default function Home() {
 	return (
 		<>
 			<HeroSection />
-			<AboutSection />
-			<ExperienceSection />
-			<SkillsSection />
-			<FeaturedProjectsSection />
-			<ContactSection />
+			<div className="relative z-10">
+				<div style={{ background: 'linear-gradient(to bottom, transparent, var(--background) 50%)' }}>
+					<AboutSection />
+				</div>
+				<div className="bg-background">
+					<ExperienceSection />
+					<SkillsSection />
+					<FeaturedProjectsSection />
+					<ContactSection />
+				</div>
+			</div>
 		</>
 	);
 }

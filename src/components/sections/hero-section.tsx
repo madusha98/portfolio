@@ -7,7 +7,7 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import cvData from "@/data/cv.json";
 import { ArrowDown } from "lucide-react";
-import { GlitchText, MagneticButton, PongGame, GyroBallGame } from "@/components/effects";
+import { GlitchText, MagneticButton, PongGame, GyroBallGame, StarfieldHyperspace } from "@/components/effects";
 
 export function HeroSection() {
 	const { scrollToSection } = useSmoothScroll();
@@ -18,12 +18,13 @@ export function HeroSection() {
 	}, []);
 
 	return (
-		<section id="home" className="min-h-screen flex items-center justify-center px-4 pt-24">
+		<section id="home" className="relative min-h-screen flex items-center justify-center px-4 pt-24 overflow-hidden">
+			<StarfieldHyperspace />
 			<motion.div
 				variants={staggerContainer}
 				initial="hidden"
 				animate="visible"
-				className="max-w-4xl mx-auto text-center"
+				className="relative z-10 max-w-4xl mx-auto text-center"
 			>
 				<motion.div variants={staggerItem} className="mb-4">
 					<span className="font-mono text-accent">Hello, I&apos;m</span>
