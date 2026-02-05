@@ -6,7 +6,7 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import cvData from "@/data/cv.json";
 import { ArrowDown } from "lucide-react";
-import { GlitchText, MagneticButton } from "@/components/effects";
+import { GlitchText, MagneticButton, PongGame } from "@/components/effects";
 
 export function HeroSection() {
 	const { scrollToSection } = useSmoothScroll();
@@ -70,6 +70,10 @@ export function HeroSection() {
 					onClick={() => scrollToSection("about")}
 				>
 					<ArrowDown className="mx-auto h-6 w-6 text-accent" />
+				</motion.div>
+
+				<motion.div variants={staggerItem} className="mt-8">
+					<PongGame />
 				</motion.div>
 			</motion.div>
 		</section>

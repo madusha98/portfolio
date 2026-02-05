@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/footer";
 import siteConfig from "@/data/site-config.json";
 import {
   CRTOverlay,
-  PongGame,
   CursorTrail,
 } from "@/components/effects";
 
@@ -126,7 +125,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased crt-screen`}
       >
         {/* Global Effects */}
-        <PongGame />
         <CRTOverlay />
         <CursorTrail />
 
