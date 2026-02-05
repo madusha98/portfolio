@@ -22,7 +22,7 @@ export function PhotographyPreviewSection() {
 					{previewCollections.map((collection, index) => (
 						<ScrollReveal key={collection.id} delay={index * 0.1}>
 							<Link
-								href={`/photography/${collection.slug}`}
+								href="/photography"
 								className="group relative aspect-square overflow-hidden pixel-border bg-muted"
 							>
 								{/* Placeholder for image - will be replaced when real images are added */}
