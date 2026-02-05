@@ -18,7 +18,7 @@ export function HeroSection() {
 	}, []);
 
 	return (
-		<section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
+		<section id="home" className="min-h-screen flex items-center justify-center px-4 pt-24">
 			<motion.div
 				variants={staggerContainer}
 				initial="hidden"
