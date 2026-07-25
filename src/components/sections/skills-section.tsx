@@ -2,43 +2,42 @@
 
 import { SectionHeader } from "@/components/shared/section-header";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
-import { SkillBadge } from "@/components/shared/skill-badge";
-import { StaggerContainer } from "@/components/animations/stagger-container";
 import cvData from "@/data/cv.json";
 
-export function SkillsSection() {
-	const skillCategories = [
-		{ title: "Architecture & Leadership", skills: cvData.skills.architecture },
-		{ title: "Frontend", skills: cvData.skills.frontend },
-		{ title: "Backend", skills: cvData.skills.backend },
-		{ title: "DevOps & Cloud", skills: cvData.skills.devops },
-		{ title: "AI & ML", skills: cvData.skills.ai },
-	];
+const skillCategories = [
+	{ title: "Architecture & Leadership", skills: cvData.skills.architecture },
+	{ title: "Frontend", skills: cvData.skills.frontend },
+	{ title: "Backend", skills: cvData.skills.backend },
+	{ title: "DevOps & Cloud", skills: cvData.skills.devops },
+	{ title: "AI & ML", skills: cvData.skills.ai },
+];
 
+export function SkillsSection() {
 	return (
-		<section id="skills" className="py-20 px-4">
-			<div className="container mx-auto max-w-6xl">
+		<section id="skills" className="border-t border-border px-6 py-24 md:px-10 md:py-32">
+			<div className="mx-auto max-w-5xl">
 				<ScrollReveal>
-					<SectionHeader title="Skills" subtitle="Technologies & expertise" />
+					<SectionHeader index="03" title="Skills" subtitle="The toolkit, honestly rated." />
 				</ScrollReveal>
 
-				<div className="space-y-8">
+				<dl className="border-t border-border">
 					{skillCategories.map((category, index) => (
-						<ScrollReveal key={category.title} delay={index * 0.1}>
-							<div>
-								<h3 className="font-mono text-xl font-bold mb-4 flex items-center gap-2">
-									<span className="text-accent">◆</span>
+						<ScrollReveal key={category.title} delay={index * 0.06}>
+							<div className="grid gap-3 border-b border-border py-6 md:grid-cols-[14rem_1fr] md:gap-10">
+								<dt className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
 									{category.title}
-								</h3>
-								<StaggerContainer className="flex flex-wrap gap-3">
+								</dt>
+								<dd className="flex flex-wrap gap-x-4 gap-y-2">
 									{category.skills.map((skill) => (
-										<SkillBadge key={skill} skill={skill} />
+										<span key={skill} className="font-mono text-sm text-muted-foreground">
+											{skill}
+										</span>
 									))}
-								</StaggerContainer>
+								</dd>
 							</div>
 						</ScrollReveal>
 					))}
-				</div>
+				</dl>
 			</div>
 		</section>
 	);

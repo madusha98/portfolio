@@ -3,107 +3,88 @@
 import { SectionHeader } from "@/components/shared/section-header";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
 import { ContactForm } from "@/components/shared/contact-form";
-import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Linkedin, Github, MapPin, Phone } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import cvData from "@/data/cv.json";
-import { MagneticButton } from "@/components/effects";
+
+const { email, phone, location, socials } = cvData.personal;
+
+const channels = [
+	{ label: "email", value: email, href: `mailto:${email}` },
+	{ label: "phone", value: phone, href: `tel:${phone}` },
+	{ label: "based", value: location, href: null },
+];
 
 export function ContactSection() {
 	return (
-		<section id="contact" className="py-20 px-4 bg-card">
-			<div className="container mx-auto max-w-6xl">
+		<section id="contact" className="border-t border-border px-6 py-24 md:px-10 md:py-32">
+			<div className="mx-auto max-w-5xl">
 				<ScrollReveal>
-					<SectionHeader title="Get In Touch" subtitle="Let's work together" />
+					<SectionHeader
+						index="05"
+						title="Contact"
+						subtitle="Got something to build? Let's talk."
+					/>
 				</ScrollReveal>
 
-				<div className="grid md:grid-cols-2 gap-12">
+				<div className="grid gap-12 md:grid-cols-2 md:gap-16">
 					<ScrollReveal>
-						<div>
-							<p className="text-lg text-muted-foreground mb-8">
-								I&apos;m always interested in new opportunities, collaborations, and exciting projects.
-								Whether you have a question or just want to say hi, feel free to reach out!
-							</p>
+						<p className="text-base leading-relaxed text-muted-foreground">
+							I&apos;m always interested in new opportunities, collaborations, and
+							interesting problems. Questions welcome too.
+						</p>
 
-							<div className="space-y-4">
-								<Card className="pixel-border">
-									<CardContent className="pt-6">
-										<div className="flex items-center gap-3">
-											<Mail className="h-5 w-5 text-accent" />
-											<div>
-												<div className="font-mono text-sm text-muted">Email</div>
-												<a
-													href={`mailto:${cvData.personal.email}`}
-													className="hover:text-accent transition-colors"
-												>
-													{cvData.personal.email}
-												</a>
-											</div>
-										</div>
-									</CardContent>
-								</Card>
-
-								<Card className="pixel-border">
-									<CardContent className="pt-6">
-										<div className="flex items-center gap-3">
-											<Phone className="h-5 w-5 text-accent" />
-											<div>
-												<div className="font-mono text-sm text-muted">Phone</div>
-												<a
-													href={`tel:${cvData.personal.phone}`}
-													className="hover:text-accent transition-colors"
-												>
-													{cvData.personal.phone}
-												</a>
-											</div>
-										</div>
-									</CardContent>
-								</Card>
-
-								<Card className="pixel-border">
-									<CardContent className="pt-6">
-										<div className="flex items-center gap-3">
-											<MapPin className="h-5 w-5 text-accent" />
-											<div>
-												<div className="font-mono text-sm text-muted">Location</div>
-												<div>{cvData.personal.location}</div>
-											</div>
-										</div>
-									</CardContent>
-								</Card>
-
-								<div className="flex gap-4 pt-4">
-									{cvData.personal.socials.github && (
-										<MagneticButton>
+						<dl className="mt-8 border-t border-border font-mono text-sm">
+							{channels.map((channel) => (
+								<div
+									key={channel.label}
+									className="flex flex-col gap-1 border-b border-border py-4"
+								>
+									<dt className="text-[11px] uppercase tracking-[0.15em] text-accent">
+										{channel.label}
+									</dt>
+									<dd>
+										{channel.href ? (
 											<a
-												href={cvData.personal.socials.github}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="p-3 pixel-border hover:bg-accent hover:text-background transition-colors block"
-												aria-label="GitHub"
+												href={channel.href}
+												className="transition-colors hover:text-accent"
 											>
-												<Github className="h-5 w-5" />
+												{channel.value}
 											</a>
-										</MagneticButton>
-									)}
-									{cvData.personal.socials.linkedin && (
-										<MagneticButton>
-											<a
-												href={cvData.personal.socials.linkedin}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="p-3 pixel-border hover:bg-accent hover:text-background transition-colors block"
-												aria-label="LinkedIn"
-											>
-												<Linkedin className="h-5 w-5" />
-											</a>
-										</MagneticButton>
-									)}
+										) : (
+											channel.value
+										)}
+									</dd>
 								</div>
-							</div>
+							))}
+						</dl>
+
+						<div className="mt-8 flex gap-3">
+							{socials.github && (
+								<a
+									href={socials.github}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="GitHub"
+									className="hairline hairline-hover p-3 transition-colors hover:text-accent"
+								>
+									<Github className="h-4 w-4" />
+								</a>
+							)}
+							{socials.linkedin && (
+								<a
+									href={socials.linkedin}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="LinkedIn"
+									className="hairline hairline-hover p-3 transition-colors hover:text-accent"
+								>
+									<Linkedin className="h-4 w-4" />
+								</a>
+							)}
 						</div>
 					</ScrollReveal>
 
-					<ScrollReveal delay={0.2}>
+					<ScrollReveal delay={0.15}>
 						<ContactForm />
 					</ScrollReveal>
 				</div>

@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import { staggerItem } from "@/lib/animations";
 import { formatDateRange } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
-import { GlitchText } from "@/components/effects";
 
 interface TimelineItemProps {
 	company: string;
@@ -28,58 +26,50 @@ export function TimelineItem({
 	technologies,
 }: TimelineItemProps) {
 	return (
-		<motion.div variants={staggerItem} className="relative flex gap-6 pb-8">
-			{/* Timeline dot */}
-			<div className="flex flex-col items-center">
-				<div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-accent bg-background">
-					<div className="h-3 w-3 rounded-full bg-accent" />
-				</div>
+		<motion.article
+			variants={staggerItem}
+			className="group grid gap-4 border-b border-border py-8 md:grid-cols-[10rem_1fr] md:gap-10"
+		>
+			<div className="flex items-baseline gap-3 md:flex-col md:items-start md:gap-2">
+				<time className="font-mono text-sm text-muted-foreground">
+					{formatDateRange(startDate, endDate)}
+				</time>
+				{current && (
+					<span className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
+						<span className="h-1.5 w-1.5 bg-accent" aria-hidden />
+						Current
+					</span>
+				)}
 			</div>
 
-			{/* Content */}
-			<div className="flex-1 md:flex md:gap-6">
-				<div className="mb-4 md:mb-0 md:w-36 md:text-right">
-					<time className="font-mono text-sm text-muted">{formatDateRange(startDate, endDate)}</time>
-					{current && (
-						<Badge variant="outline" className="mt-2 pixel-border-accent text-accent border-accent">
-							Current
-						</Badge>
-					)}
-				</div>
+			<div>
+				<h3 className="font-mono text-lg font-bold tracking-tight transition-colors group-hover:text-accent">
+					{position}
+				</h3>
+				<p className="mt-1 font-mono text-sm text-muted-foreground">
+					{company} · {location}
+				</p>
 
-				<div className="flex-1">
-					<h3 className="font-mono text-xl font-bold mb-1">
-						<GlitchText glitchOnHover={true} randomGlitch={false}>
-							{position}
-						</GlitchText>
-					</h3>
-					<div className="text-muted mb-2">
-						{company} • {location}
-					</div>
+				<ul className="mt-5 space-y-2.5">
+					{achievements.map((achievement) => (
+						<li
+							key={achievement}
+							className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+						>
+							<span className="mt-[0.4em] h-1 w-1 shrink-0 bg-accent" aria-hidden />
+							<span>{achievement}</span>
+						</li>
+					))}
+				</ul>
 
-					<ul className="space-y-2 mb-4">
-						{achievements.map((achievement, index) => (
-							<li key={index} className="text-sm text-muted-foreground flex gap-2">
-								<span className="text-accent mt-1">▹</span>
-								<span>{achievement}</span>
-							</li>
-						))}
-					</ul>
-
-					<div className="flex flex-wrap gap-2">
-						{technologies.slice(0, 5).map((tech) => (
-							<Badge key={tech} variant="secondary" className="text-xs">
-								{tech}
-							</Badge>
-						))}
-						{technologies.length > 5 && (
-							<Badge variant="secondary" className="text-xs">
-								+{technologies.length - 5} more
-							</Badge>
-						)}
-					</div>
-				</div>
+				<ul className="mt-5 flex flex-wrap gap-x-3 gap-y-1.5">
+					{technologies.map((tech) => (
+						<li key={tech} className="font-mono text-[11px] text-muted-foreground">
+							{tech}
+						</li>
+					))}
+				</ul>
 			</div>
-		</motion.div>
+		</motion.article>
 	);
 }

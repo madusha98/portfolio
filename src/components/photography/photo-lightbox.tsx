@@ -100,7 +100,7 @@ export function PhotoLightbox({
 			/>
 
 			{/* Counter */}
-			<div className="absolute top-4 left-4 z-20 font-mono text-xs text-muted">
+			<div className="absolute top-4 left-4 z-20 font-mono text-xs text-white/60">
 				{currentIndex + 1}/{totalCount}
 			</div>
 
@@ -119,7 +119,7 @@ export function PhotoLightbox({
 					setDirection(-1);
 					onPrev();
 				}}
-				className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 p-2 pixel-border text-muted hover:text-accent transition-colors bg-black/50"
+				className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 p-2 border border-white/20 text-white/70 hover:text-accent transition-colors bg-black/50"
 			>
 				<ChevronLeft className="h-6 w-6" />
 			</button>
@@ -130,7 +130,7 @@ export function PhotoLightbox({
 					setDirection(1);
 					onNext();
 				}}
-				className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 p-2 pixel-border text-muted hover:text-accent transition-colors bg-black/50"
+				className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 p-2 border border-white/20 text-white/70 hover:text-accent transition-colors bg-black/50"
 			>
 				<ChevronRight className="h-6 w-6" />
 			</button>
@@ -174,8 +174,6 @@ export function PhotoLightbox({
 							sizes="95vw"
 							onLoad={() => setLoaded(true)}
 						/>
-						{/* CRT scanline overlay */}
-						<div className="absolute inset-0 pointer-events-none scan-lines opacity-[0.03]" />
 					</motion.div>
 				</AnimatePresence>
 
@@ -186,7 +184,7 @@ export function PhotoLightbox({
 					transition={{ delay: 0.1 }}
 					className="mt-3 w-full max-w-xl font-mono text-xs space-y-0.5 px-4 shrink-0"
 				>
-					<div className="flex flex-wrap gap-x-4 gap-y-0.5 text-muted">
+					<div className="flex flex-wrap gap-x-4 gap-y-0.5 text-white/60">
 						{image.camera && (
 							<p>
 								<span className="text-accent">{">"}</span> {image.camera}

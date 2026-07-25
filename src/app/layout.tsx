@@ -4,10 +4,6 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import siteConfig from "@/data/site-config.json";
-import {
-  CRTOverlay,
-  CursorTrail,
-} from "@/components/effects";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -121,15 +117,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased crt-screen`}
-      >
-        {/* Global Effects */}
-        <CRTOverlay />
-        <CursorTrail />
-
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
-        <main className="relative z-10">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

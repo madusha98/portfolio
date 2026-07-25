@@ -1,90 +1,61 @@
 "use client";
 
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, Clock, Calendar } from "lucide-react";
-import Link from "next/link";
-import { GlitchText } from "@/components/effects";
+import { BackLink } from "@/components/shared/back-link";
+import { Clock, Calendar } from "lucide-react";
 import { BlogPost } from "@/types/blog";
 import { ReactNode } from "react";
 
-export function BlogPostLayout({
-	post,
-	children,
-}: {
-	post: BlogPost;
-	children: ReactNode;
-}) {
+export function BlogPostLayout({ post, children }: { post: BlogPost; children: ReactNode }) {
 	return (
-		<section className="py-20 px-4 min-h-screen">
-			<div className="container mx-auto max-w-3xl">
-				{/* Back navigation */}
+		<section className="min-h-screen px-6 py-24 md:px-10 md:py-32">
+			<div className="mx-auto max-w-3xl">
 				<ScrollReveal>
-					<Link href="/blog">
-						<Button
-							variant="ghost"
-							className="mb-8 font-mono hover:text-accent transition-colors"
-						>
-							<ArrowLeft className="mr-2 h-4 w-4" />
-							Back to Blog
-						</Button>
-					</Link>
+					<BackLink href="/blog">Blog</BackLink>
 				</ScrollReveal>
 
-				{/* Header */}
 				<ScrollReveal>
-					<div className="mb-12">
-						<div className="flex flex-wrap items-center gap-3 mb-4">
-							<span className="flex items-center gap-1 text-sm text-muted font-mono">
-								<Calendar className="h-4 w-4" />
-								{new Date(post.date).toLocaleDateString("en-US", {
-									year: "numeric",
-									month: "long",
-									day: "numeric",
-								})}
+					<header className="mt-8 mb-12 border-b border-border pb-8">
+						<div className="flex flex-wrap items-center gap-5 font-mono text-xs text-muted-foreground">
+							<span className="flex items-center gap-1.5">
+								<Calendar className="h-3.5 w-3.5" aria-hidden />
+								<time dateTime={post.date}>
+									{new Date(post.date).toLocaleDateString("en-US", {
+										year: "numeric",
+										month: "long",
+										day: "numeric",
+									})}
+								</time>
 							</span>
-							<span className="flex items-center gap-1 text-sm text-muted font-mono">
-								<Clock className="h-4 w-4" />
+							<span className="flex items-center gap-1.5">
+								<Clock className="h-3.5 w-3.5" aria-hidden />
 								{post.readingTime} min read
 							</span>
 						</div>
-						<h1 className="font-mono text-3xl md:text-5xl font-bold mb-4">
-							<span className="text-accent">&gt;</span>{" "}
-							<GlitchText glitchOnHover={true} randomGlitch={false}>
-								{post.title}
-							</GlitchText>
+
+						<h1 className="mt-5 text-balance font-mono text-3xl font-bold tracking-tight md:text-4xl">
+							{post.title}
 						</h1>
-						<div className="flex flex-wrap gap-2 mb-4">
+
+						<ul className="mt-5 flex flex-wrap gap-x-3 gap-y-1.5">
 							{post.tags.map((tag) => (
-								<Badge key={tag} variant="outline" className="font-mono text-xs">
-									{tag}
-								</Badge>
+								<li key={tag} className="font-mono text-[11px] text-accent">
+									#{tag}
+								</li>
 							))}
-						</div>
-						<div className="h-1 w-20 bg-accent mt-4" />
-					</div>
+						</ul>
+					</header>
 				</ScrollReveal>
 
-				{/* MDX Content */}
 				<ScrollReveal>
-					<article className="mdx-content">{children}</article>
+					<article className="mdx-content prose prose-neutral max-w-none dark:prose-invert prose-headings:font-mono prose-headings:tracking-tight prose-a:text-accent">
+						{children}
+					</article>
 				</ScrollReveal>
 
-				{/* Footer navigation */}
-				<ScrollReveal>
-					<div className="mt-16 pt-8 border-t border-border">
-						<Link href="/blog">
-							<Button
-								variant="ghost"
-								className="font-mono hover:text-accent transition-colors"
-							>
-								<ArrowLeft className="mr-2 h-4 w-4" />
-								All Posts
-							</Button>
-						</Link>
-					</div>
-				</ScrollReveal>
+				<div className="mt-16 border-t border-border pt-8">
+					<BackLink href="/blog">All posts</BackLink>
+				</div>
 			</div>
 		</section>
 	);

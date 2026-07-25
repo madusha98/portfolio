@@ -1,48 +1,48 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import cvData from "@/data/cv.json";
 
+const { socials, email, name } = cvData.personal;
+
 export function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="border-t-2 border-foreground bg-background py-8">
-			<div className="container mx-auto px-4">
-				<div className="flex flex-col md:flex-row items-center justify-between gap-4">
-					<div className="font-mono text-sm text-muted">
-						© {currentYear} {cvData.personal.name}. Built with Next.js & Tailwind CSS.
-					</div>
+		<footer className="border-t border-border px-6 py-10 md:px-10">
+			<div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+				<p className="font-mono text-xs text-muted-foreground">
+					<span className="text-accent">$</span> © {currentYear} {name}
+				</p>
 
-					<div className="flex items-center gap-4">
-						{cvData.personal.socials.github && (
-							<a
-								href={cvData.personal.socials.github}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="hover:text-accent transition-colors"
-								aria-label="GitHub"
-							>
-								<Github className="h-5 w-5" />
-							</a>
-						)}
-						{cvData.personal.socials.linkedin && (
-							<a
-								href={cvData.personal.socials.linkedin}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="hover:text-accent transition-colors"
-								aria-label="LinkedIn"
-							>
-								<Linkedin className="h-5 w-5" />
-							</a>
-						)}
+				<div className="flex items-center gap-5 text-muted-foreground">
+					{socials.github && (
 						<a
-							href={`mailto:${cvData.personal.email}`}
-							className="hover:text-accent transition-colors"
-							aria-label="Email"
+							href={socials.github}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="transition-colors hover:text-accent"
+							aria-label="GitHub"
 						>
-							<Mail className="h-5 w-5" />
+							<Github className="h-4 w-4" />
 						</a>
-					</div>
+					)}
+					{socials.linkedin && (
+						<a
+							href={socials.linkedin}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="transition-colors hover:text-accent"
+							aria-label="LinkedIn"
+						>
+							<Linkedin className="h-4 w-4" />
+						</a>
+					)}
+					<a
+						href={`mailto:${email}`}
+						className="transition-colors hover:text-accent"
+						aria-label="Email"
+					>
+						<Mail className="h-4 w-4" />
+					</a>
 				</div>
 			</div>
 		</footer>
