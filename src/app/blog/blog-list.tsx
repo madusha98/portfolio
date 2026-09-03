@@ -2,110 +2,82 @@
 
 import { SectionHeader } from "@/components/shared/section-header";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
+import { StaggerContainer } from "@/components/animations/stagger-container";
+import { BackLink } from "@/components/shared/back-link";
+import { ArrowUpRight, Clock } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { RGBSplit, GlitchText } from "@/components/effects";
+import { staggerItem } from "@/lib/animations";
 import { BlogPost } from "@/types/blog";
 
 export function BlogList({ posts }: { posts: BlogPost[] }) {
 	return (
-		<section className="py-20 px-4 min-h-screen">
-			<div className="container mx-auto max-w-6xl">
+		<section className="min-h-screen px-6 py-24 md:px-10 md:py-32">
+			<div className="mx-auto max-w-5xl">
 				<ScrollReveal>
-					<Link href="/">
-						<Button
-							variant="ghost"
-							className="mb-8 font-mono hover:text-accent transition-colors"
-						>
-							<ArrowLeft className="mr-2 h-4 w-4" />
-							Back to Home
-						</Button>
-					</Link>
+					<BackLink href="/">Home</BackLink>
 				</ScrollReveal>
 
 				<ScrollReveal>
 					<SectionHeader
 						title="Blog"
-						subtitle="Thoughts on code, projects, and lessons learned"
+						subtitle="Thoughts on code, projects, and lessons learned."
+						className="mt-8"
 					/>
 				</ScrollReveal>
 
 				{posts.length === 0 ? (
-					<ScrollReveal>
-						<p className="text-muted-foreground font-mono">
-							No posts yet. Check back soon.
-						</p>
-					</ScrollReveal>
+					<p className="font-mono text-sm text-muted-foreground">
+						No posts yet. Check back soon.
+					</p>
 				) : (
-					<div className="grid md:grid-cols-2 gap-6 max-w-4xl">
-						{posts.map((post, index) => (
-							<ScrollReveal key={post.slug} delay={index * 0.1}>
-								<RGBSplit className="block w-full">
-									<motion.div whileHover="hover" initial="rest">
-										<Link href={`/blog/${post.slug}`}>
-											<Card className="pixel-border h-full flex flex-col cursor-pointer">
-												<CardHeader>
-													<div className="flex items-center justify-between mb-2">
-														<Badge variant="outline" className="font-mono">
-															{new Date(post.date).toLocaleDateString(
-																"en-US",
-																{
-																	year: "numeric",
-																	month: "short",
-																	day: "numeric",
-																}
-															)}
-														</Badge>
-														<span className="flex items-center gap-1 text-xs text-muted font-mono">
-															<Clock className="h-3 w-3" />
-															{post.readingTime} min
-														</span>
-													</div>
-													<CardTitle className="font-mono">
-														<GlitchText
-															glitchOnHover={true}
-															randomGlitch={false}
-														>
-															{post.title}
-														</GlitchText>
-													</CardTitle>
-													<CardDescription>{post.excerpt}</CardDescription>
-												</CardHeader>
-												<CardContent className="flex-1 flex flex-col">
-													<div className="flex flex-wrap gap-2 mb-4">
-														{post.tags.map((tag) => (
-															<Badge
-																key={tag}
-																variant="outline"
-																className="text-xs"
-															>
-																{tag}
-															</Badge>
-														))}
-													</div>
+					<StaggerContainer className="border-t border-border">
+						{posts.map((post) => (
+							<motion.article key={post.slug} variants={staggerItem}>
+								<Link
+									href={`/blog/${post.slug}`}
+									className="group grid gap-3 border-b border-border py-8 md:grid-cols-[10rem_1fr] md:gap-10"
+								>
+									<div className="flex items-center gap-4 font-mono text-sm text-muted-foreground md:flex-col md:items-start md:gap-2">
+										<time dateTime={post.date}>
+											{new Date(post.date).toLocaleDateString("en-US", {
+												year: "numeric",
+												month: "short",
+												day: "numeric",
+											})}
+										</time>
+										<span className="flex items-center gap-1.5 text-xs">
+											<Clock className="h-3 w-3" aria-hidden />
+											{post.readingTime} min
+										</span>
+									</div>
 
-													<div className="mt-auto flex items-center text-sm font-mono text-accent group">
-														Read more
-														<ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-													</div>
-												</CardContent>
-											</Card>
-										</Link>
-									</motion.div>
-								</RGBSplit>
-							</ScrollReveal>
+									<div>
+										<h2 className="flex items-start gap-2 font-mono text-lg font-bold tracking-tight transition-colors group-hover:text-accent">
+											{post.title}
+											<ArrowUpRight
+												className="mt-0.5 h-4 w-4 shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
+												aria-hidden
+											/>
+										</h2>
+										<p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+											{post.excerpt}
+										</p>
+										<ul className="mt-4 flex flex-wrap gap-x-3 gap-y-1.5">
+											{post.tags.map((tag) => (
+												<li
+													key={tag}
+													className="font-mono text-[11px] text-muted-foreground"
+												>
+													#{tag}
+												</li>
+											))}
+										</ul>
+									</div>
+								</Link>
+							</motion.article>
 						))}
-					</div>
+					</StaggerContainer>
 				)}
 			</div>
 		</section>

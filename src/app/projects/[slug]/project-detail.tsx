@@ -1,12 +1,9 @@
 "use client";
 
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { BackLink } from "@/components/shared/back-link";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ExternalLink, Zap, Lightbulb, Target } from "lucide-react";
-import Link from "next/link";
-import { GlitchText } from "@/components/effects";
+import { ExternalLink } from "lucide-react";
 
 interface Project {
 	id: string;
@@ -27,131 +24,71 @@ interface Project {
 }
 
 export function ProjectDetail({ project }: { project: Project }) {
+	const caseStudy = [
+		{ label: "Challenge", body: project.challenge },
+		{ label: "Solution", body: project.solution },
+		{ label: "Impact", body: project.impact },
+	].filter((entry) => entry.body);
+
 	return (
-		<section className="py-20 px-4 min-h-screen">
-			<div className="container mx-auto max-w-4xl">
-				{/* Back navigation */}
+		<section className="min-h-screen px-6 py-24 md:px-10 md:py-32">
+			<div className="mx-auto max-w-3xl">
 				<ScrollReveal>
-					<Link href="/projects">
-						<Button
-							variant="ghost"
-							className="mb-8 font-mono hover:text-accent transition-colors"
-						>
-							<ArrowLeft className="mr-2 h-4 w-4" />
-							Back to Projects
-						</Button>
-					</Link>
+					<BackLink href="/projects">Projects</BackLink>
 				</ScrollReveal>
 
-				{/* Header */}
 				<ScrollReveal>
-					<div className="mb-12">
-						<div className="flex flex-wrap items-center gap-3 mb-4">
-							<Badge variant="outline" className="font-mono">
-								{project.year}
-							</Badge>
-							<Badge variant="secondary">{project.category}</Badge>
+					<header className="mt-8 mb-12 border-b border-border pb-8">
+						<div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground">
+							<span>{project.year}</span>
+							<span className="rule" />
+							<span>{project.category}</span>
 						</div>
-						<h1 className="font-mono text-3xl md:text-5xl font-bold mb-3">
-							<span className="text-accent">&gt;</span>{" "}
-							<GlitchText glitchOnHover={true} randomGlitch={false}>
-								{project.title}
-							</GlitchText>
+						<h1 className="mt-5 text-balance font-mono text-3xl font-bold tracking-tight md:text-4xl">
+							{project.title}
 						</h1>
-						<p className="text-muted-foreground text-lg md:text-xl">
-							{project.tagline}
-						</p>
-						<div className="h-1 w-20 bg-accent mt-4" />
-					</div>
+						<p className="mt-3 text-lg text-muted-foreground">{project.tagline}</p>
+					</header>
 				</ScrollReveal>
 
-				{/* Description */}
 				<ScrollReveal>
-					<p className="text-muted-foreground leading-relaxed mb-12 text-base md:text-lg">
+					<p className="text-base leading-relaxed text-muted-foreground">
 						{project.description}
 					</p>
 				</ScrollReveal>
 
-				{/* Tech stack */}
 				<ScrollReveal>
-					<div className="mb-12">
-						<h2 className="font-mono text-sm text-accent mb-3 uppercase tracking-wider">
-							Tech Stack
+					<div className="mt-12">
+						<h2 className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
+							Tech stack
 						</h2>
-						<div className="flex flex-wrap gap-2">
+						<ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
 							{project.technologies.map((tech) => (
-								<Badge
-									key={tech}
-									variant="outline"
-									className="font-mono text-sm pixel-border"
-								>
+								<li key={tech} className="font-mono text-sm text-muted-foreground">
 									{tech}
-								</Badge>
+								</li>
 							))}
-						</div>
+						</ul>
 					</div>
 				</ScrollReveal>
 
-				{/* Case study sections */}
-				<div className="space-y-6">
-					<ScrollReveal>
-						<Card className="pixel-border">
-							<CardHeader>
-								<CardTitle className="font-mono flex items-center gap-2">
-									<Target className="h-5 w-5 text-accent" />
-									<GlitchText glitchOnHover={true} randomGlitch={false}>
-										Challenge
-									</GlitchText>
-								</CardTitle>
-							</CardHeader>
-							<CardContent>
-								<p className="text-muted-foreground leading-relaxed">
-									{project.challenge}
-								</p>
-							</CardContent>
-						</Card>
-					</ScrollReveal>
+				<dl className="mt-12 border-t border-border">
+					{caseStudy.map((entry, index) => (
+						<ScrollReveal key={entry.label} delay={index * 0.1}>
+							<div className="grid gap-3 border-b border-border py-8 md:grid-cols-[10rem_1fr] md:gap-10">
+								<dt className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
+									{entry.label}
+								</dt>
+								<dd className="text-sm leading-relaxed text-muted-foreground">
+									{entry.body}
+								</dd>
+							</div>
+						</ScrollReveal>
+					))}
+				</dl>
 
-					<ScrollReveal delay={0.1}>
-						<Card className="pixel-border">
-							<CardHeader>
-								<CardTitle className="font-mono flex items-center gap-2">
-									<Lightbulb className="h-5 w-5 text-accent" />
-									<GlitchText glitchOnHover={true} randomGlitch={false}>
-										Solution
-									</GlitchText>
-								</CardTitle>
-							</CardHeader>
-							<CardContent>
-								<p className="text-muted-foreground leading-relaxed">
-									{project.solution}
-								</p>
-							</CardContent>
-						</Card>
-					</ScrollReveal>
-
-					<ScrollReveal delay={0.2}>
-						<Card className="pixel-border">
-							<CardHeader>
-								<CardTitle className="font-mono flex items-center gap-2">
-									<Zap className="h-5 w-5 text-accent" />
-									<GlitchText glitchOnHover={true} randomGlitch={false}>
-										Impact
-									</GlitchText>
-								</CardTitle>
-							</CardHeader>
-							<CardContent>
-								<p className="text-muted-foreground leading-relaxed">
-									{project.impact}
-								</p>
-							</CardContent>
-						</Card>
-					</ScrollReveal>
-				</div>
-
-				{/* Links */}
 				{Object.values(project.links).some(Boolean) && (
-					<ScrollReveal delay={0.3}>
+					<ScrollReveal delay={0.2}>
 						<div className="mt-12 flex flex-wrap gap-4">
 							{Object.entries(project.links).map(
 								([label, url]) =>
@@ -164,10 +101,10 @@ export function ProjectDetail({ project }: { project: Project }) {
 										>
 											<Button
 												variant="outline"
-												className="pixel-border font-mono hover:text-accent transition-colors"
+												className="key rounded-none font-mono"
 											>
 												{label.charAt(0).toUpperCase() + label.slice(1)}
-												<ExternalLink className="ml-2 h-4 w-4" />
+												<ExternalLink className="ml-2 h-4 w-4" aria-hidden />
 											</Button>
 										</a>
 									)

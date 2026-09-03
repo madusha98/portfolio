@@ -63,7 +63,7 @@ export const mdxComponents: MDXComponents = {
 	},
 	pre: (props) => (
 		<pre
-			className="bg-card border border-border rounded-lg p-4 overflow-x-auto mb-4 font-mono text-sm pixel-border"
+			className="bg-card border border-border p-4 overflow-x-auto mb-4 font-mono text-sm"
 			{...props}
 		/>
 	),

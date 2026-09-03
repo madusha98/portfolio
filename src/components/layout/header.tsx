@@ -5,7 +5,6 @@ import { MobileMenu } from "./mobile-menu";
 import { motion } from "framer-motion";
 import { fadeInDown } from "@/lib/animations";
 import Link from "next/link";
-import { GlitchText } from "@/components/effects";
 
 export function Header() {
 	return (
@@ -13,23 +12,21 @@ export function Header() {
 			initial="hidden"
 			animate="visible"
 			variants={fadeInDown}
-			className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b-2 border-foreground"
+			className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md"
 		>
-			<div className="container mx-auto px-4">
-				<div className="flex items-center justify-between h-16">
-					<Link href="/" className="font-mono text-xl font-bold hover:text-accent transition-colors">
-						<GlitchText>ML.</GlitchText>
-					</Link>
+			<div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6 md:px-10">
+				<Link
+					href="/"
+					className="font-mono text-sm font-bold tracking-tight transition-colors hover:text-accent"
+				>
+					ML<span className="text-accent">.</span>
+				</Link>
 
-					{/* Desktop Navigation */}
-					<div className="hidden md:block">
-						<Navigation />
-					</div>
-
-					{/* Mobile Menu */}
-					<div className="md:hidden">
-						<MobileMenu />
-					</div>
+				<div className="hidden md:block">
+					<Navigation />
+				</div>
+				<div className="md:hidden">
+					<MobileMenu />
 				</div>
 			</div>
 		</motion.header>
